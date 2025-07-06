@@ -1,0 +1,14 @@
+{
+    "checkpoint": "GoogleBooks_E_v1.pth",
+    "onnx-model": "GoogleBooks_E_v1.onnx",
+    "architecture" : "Easter2",
+    "input_width": 3200,
+    "input_height": 80,
+    "input_layer": "input",
+    "output_layer": "output",
+    "squeeze_channel_dim": "yes",
+    "swap_hw": "no",
+    "encoder": "wylie",
+    "add_blank": "yes",
+    "charset": "!#%'°^$`()+-./0123456789:=?@ADHIMNRSTUWXY[\\]_abcdefghijklmnoprstuwyz|~§&äüö<>;}"
+  }

@@ -1,0 +1,5 @@
+{
+  "model_file":  "PhotiLines.onnx",
+  "patch_size": 512,
+  "input_channels": 1
+}
