@@ -1,5 +1,4 @@
 {
-  "checkpoint": "OCRModel.pth",
   "onnx-model": "OCRModel.onnx",
   "architecture": "Easter2",
   "input_width": 3200,
@@ -8,6 +7,7 @@
   "output_layer": "output",
   "squeeze_channel_dim": "yes",
   "swap_hw": "no",
+  "add_blank": "yes",
   "encoder": "wylie",
   "charset": [
     "!",

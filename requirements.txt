@@ -1,0 +1,8 @@
+python-telegram-bot
+opencv-python-headless
+onnxruntime
+numpy
+scipy
+pyewts
+pyctcdecode
+tqdm
