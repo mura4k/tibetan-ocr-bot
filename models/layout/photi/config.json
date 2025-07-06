@@ -1,0 +1,12 @@
+{
+  "model_file": "photi.onnx",
+  "patch_size": 512,
+  "input_channels": 3,
+  "classes": [
+    "background",
+    "image",
+    "line",
+    "margin",
+    "caption"
+  ]
+}
