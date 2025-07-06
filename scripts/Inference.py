@@ -500,6 +500,8 @@ class OCRPipeline:
                         elif self.encoder == CharsetEncoder.Stack and target_encoding == Encoding.Wylie:
                             pred = self.converter.toWylie(pred)
 
+                        pred = pred.replace("#", "@")
+
                         ocr_line = OCRLine(
                             text=pred,
                             encoding=Encoding.Wylie if target_encoding == Encoding.Wylie else Encoding.Unicode

@@ -94,7 +94,6 @@ def read_ocr_model_config(config_file: str):
 
     onnx_model_file = f"{model_dir}/{json_content['onnx-model']}"
     architecture = json_content["architecture"]
-    version = json_content["version"]
     input_width = json_content["input_width"]
     input_height = json_content["input_height"]
     input_layer = json_content["input_layer"]
@@ -118,8 +117,7 @@ def read_ocr_model_config(config_file: str):
         swap_hw,
         encoder=CHARSETENCODER[encoder],
         charset=characters,
-        add_blank=add_blank,
-        version=version
+        add_blank=add_blank
     )
 
     return config
@@ -887,7 +885,6 @@ def get_line_image(image: npt.NDArray, mask: npt.NDArray, bbox_h: int, bbox_tole
         return fallback_img, k_factor
 
 
-# TODO: check if this is the same normalization applied during training
 def normalize(image: npt.NDArray) -> npt.NDArray:
     image = image.astype(np.float32)
     image /= 255.0
@@ -895,7 +892,11 @@ def normalize(image: npt.NDArray) -> npt.NDArray:
 
 
 def binarize(
-        img: npt.NDArray, adaptive: bool = True, block_size: int = 51, c: int = 13
+        img: npt.NDArray,
+        adaptive: bool = True,
+        block_size: int = 51,
+        c: int = 13,
+        output_rgb: bool = True
 ) -> npt.NDArray:
     line_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
@@ -912,8 +913,7 @@ def binarize(
     else:
         _, bw = cv2.threshold(line_img, 120, 255, cv2.THRESH_BINARY)
 
-    bw = cv2.cvtColor(bw, cv2.COLOR_GRAY2RGB)
-    return bw
+    return cv2.cvtColor(bw, cv2.COLOR_GRAY2RGB) if output_rgb else bw
 
 
 def pad_to_width(img: np.array, target_width: int, target_height: int, padding: str) -> np.array:
